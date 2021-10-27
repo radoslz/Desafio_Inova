@@ -3,7 +3,7 @@
 #já que o pandas poderia ler os database de um arquivo de fora.
 
 import pandas as pd
-# from google.colab import output
+import os
 
 #E Aqui criei os DB das informações que vou usar no programa.
 
@@ -27,23 +27,42 @@ Monstros = pd.DataFrame({'Monstro': ['Rei Bárbaro','Capitão do Bote','Callisto
                                       'A mãe de Kratos e Deimos. Punida pelos deuses por revelar a identidade do pai de seus filhos, Callisto é transformada em uma besta que Kratos deve matar.',
                                       'O filho do deus Hermes e um mensageiro do Olimpo. Tenta avisar Kratos sobre as consequências de sua jornada sangrenta'],
                              'Classe': ['Bárbaro', 'Guerreiro', 'Besta', 'Semideus']}, 
-                             columns = ['Monstro', 'Vida', 'Tipo', 'Elemento'])
+                             columns = ['Monstro', 'Lore', 'Classe'])
 
 #E então tomei a decisão de criar umas funções sendo:
 
+# Exibir nome do game.
+def nome_game(number):
+  if number == 0:
+    print('----------------------------------------Lançamento------------------------------------------')
+    print('------------------------------- God of War: The Rado Chronicles-----------------------------')
+  elif number == 1:
+    print('--------------------------------------------------------------------------------------------')
+    print('------------------------------- God of War: The Rado Chronicles-----------------------------')
+
+
 #Vai exibir na tela a história do game.
-def hsitoria(): 
-  print('''
-  Após Kratos se tornar o novo deus da guerra, passa a guiar os soldados de Esparta, liderando-os sobre várias batalhas e destruindo várias cidades.
-  Antes de descer do Olimpo para ajudar seus guerreiros espartanos a destruir a cidade de Rodes, Kratos é avisado por Atena sobre as consequências de seus atos.
-  Sem escutá-la, ele salta do Olimpo para Rodes e, ao chegar, uma águia retira parte do poder de Kratos e o deposita em uma estátua gigante (o Colosso de Rodes).
-  Kratos, com muita raiva e acreditando ser Atena a responsável, vai em busca de derrotar o colosso para provar para os deuses do Olimpo que ele merece ser um deus.
-  Nisso, Zeus, num aparente gesto de generosidade, oferece a Kratos a arma que acabou com a Grande Guerra e derrotou os titãs, a Lâmina do Olimpo. Somente com ela,
-  Kratos conseguiria derrotar o Colosso.
-  ''')
+def hsitoria():
+  while True:
+    nome_game(1)
+    print('''
+    Após Kratos se tornar o novo deus da guerra, passa a guiar os soldados de Esparta, liderando-os sobre várias batalhas e destruindo várias cidades.
+    Antes de descer do Olimpo para ajudar seus guerreiros espartanos a destruir a cidade de Rodes, Kratos é avisado por Atena sobre as consequências de seus atos.
+    Sem escutá-la, ele salta do Olimpo para Rodes e, ao chegar, uma águia retira parte do poder de Kratos e o deposita em uma estátua gigante (o Colosso de Rodes).
+    Kratos, com muita raiva e acreditando ser Atena a responsável, vai em busca de derrotar o colosso para provar para os deuses do Olimpo que ele merece ser um deus.
+    Nisso, Zeus, num aparente gesto de generosidade, oferece a Kratos a arma que acabou com a Grande Guerra e derrotou os titãs, a Lâmina do Olimpo. Somente com ela,
+    Kratos conseguiria derrotar o Colosso. \n 
+    ''')
+    print("0 - Voltar para o Menu Principal")
+    opcao = int(input('Selecione um mapa: '))
+    if opcao == (0):
+      os.system("clear")
+      break
 
 # função para a criação de entras das opçeõs de cada entrada do submenu
 def menu(dataframe, key, opcoes):
+  nome_game(1)
+  print('\n')
   for index, nome in enumerate(dataframe[key]): # enumera cada entrada do submenu
     print(str(index) + " - " + nome)
     opcoes.append(str(index) + " - " + nome)
@@ -57,7 +76,8 @@ def mapa():
   while True: 
     opcao = int(input('Selecione um mapa: '))
     if opcao < (len(opcoes) - 1):
-      #output.clear()
+      os.system("clear")
+      nome_game(1)
       print(f'''
       Em {historia_mapa['Nome_do_Continente'][opcao]}
       
@@ -66,11 +86,13 @@ def mapa():
       a = "\n"
       print(a.join(opcoes))
     elif opcao == (len(opcoes) - 1):
-      #output.clear()
+      os.system("clear")
       break
     else:
-      #output.clear()
-      print('Opção invalida')
+      os.system("clear")
+      nome_game(1)
+      print('\n')
+      print('Opção invalida \n')
       a = "\n"
       print(a.join(opcoes))
       
@@ -80,7 +102,8 @@ def personagens():
   while True:
     opcao = int(input('Selecione um Personagem: '))
     if opcao < (len(opcoes) - 1):
-      #output.clear()
+      os.system("clear")
+      nome_game(1)
       print(f'''
       O persongagem {Personagens['Personagem'][opcao]}
       Tem a História:
@@ -95,11 +118,13 @@ def personagens():
       a = "\n"
       print(a.join(opcoes))
     elif opcao == (len(opcoes) - 1):
-      #output.clear()
+      os.system("clear")
       break
     else:
-      #output.clear()
-      print('Opção invalida')
+      os.system("clear")
+      nome_game(1)
+      print('\n')
+      print('Opção invalida \n')
       a = "\n"
       print(a.join(opcoes))
       
@@ -109,7 +134,8 @@ def monstros():
   while True:
     opcao = int(input('Selecione um Monstro: '))
     if opcao < (len(opcoes) - 1):
-      #output.clear()
+      os.system("clear")
+      nome_game(1)
       print(f'''
       O {Monstros['Monstro'][opcao]}
 
@@ -121,10 +147,57 @@ def monstros():
       a = "\n"
       print(a.join(opcoes))
     elif opcao == (len(opcoes) - 1):
-      #output.clear()
+      os.system("clear")
       break
     else:
-      #output.clear()
-      print('Opção invalida')
+      os.system("clear")
+      nome_game(1)
+      print('\n')
+      print('Opção invalida \n')
       a = "\n"
       print(a.join(opcoes))
+
+
+# Divulgação do Game
+os.system("clear")
+#vai exibir o menu principal
+while True:
+  nome_game(0)
+  print('''
+      Menu de opções:
+      1 - História do Jogo.
+      2 - Conheça o mapa do game.
+      3 - Personagens jogaveis.
+      4 - Monstros.
+      5 - Sair
+    ''')
+
+  opc = int(input("Digite um numero: "))
+  if opc == 1:
+    os.system("clear")
+    hsitoria()
+
+  elif opc == 2:
+    opcoes = [] # Limpa a lista de entrada.
+    os.system("clear")
+    menu(historia_mapa, 'Nome_do_Continente', opcoes)
+    mapa()
+
+  elif opc == 3:
+    os.system("clear")
+    opcoes = []
+    menu(Personagens, 'Personagem', opcoes)
+    personagens()
+
+  elif opc == 4:
+    opcoes = []
+    os.system("clear")
+    menu(Monstros, 'Monstro', opcoes)
+    monstros()
+
+  elif opc == 5:
+    print('Saindo')
+    break
+  else:
+    os.system("clear")
+    print("Opção invalida")
